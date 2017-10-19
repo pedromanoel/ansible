@@ -28,6 +28,15 @@
     shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     register: ohmyzsh_result
     changed_when: "'installed' not in ohmyzsh_result.stdout"
+  - name: Clona git-tdd
+    git:
+      repo: 'git@github.com:binkley/shell.git'
+      dest: ~/workspaces/git/github/binkley/shell.git
+  - name: Adiciona git-tdd no PATH
+    file:
+      src: '~/workspaces/git/github/binkley/shell.git/git/git-tdd'
+      dest: '~/.bin/git-tdd'
+      state: link
   - name: Configura zsh
     copy: src=./config_files/zshrc dest=~/.zshrc
           backup=true
