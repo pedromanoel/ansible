@@ -7,17 +7,26 @@
     copy: src={{item}} dest=~/.ssh/
     with_fileglob:
       - ./config_files/ssh/*
-  - name: Instala diversos programas programas com brew
+  - name: Instala xcode command line developer tools
+    shell: xcode-select --install || true
+    register: xcode_result
+    changed_when: "'already installed' not in xcode_result.stderr"
+  - name: Instala diversos programas com brew
     homebrew: name={{item}}
     with_items:
-      - git
-      - pyenv
       - chruby
+      - git
+      - jq
+      - jump
+      - pyenv
+      - zsh
+      - zsh-completions
   - name: Instala diversos programas com cask
     homebrew_cask: name={{item}}
     with_items:
+      - appcleaner
+      - docker
+      - iterm2
       - macdown
       - qlmarkdown
       - qlstephen
-      - docker
-      - appcleaner
