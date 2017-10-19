@@ -1,6 +1,12 @@
 ---
 - hosts: localhost
   tasks:
+  - name: Configura git
+    copy: src=./config_files/git dest=~/.gitconfig
+  - name: Configura ssh
+    copy: src={{item}} dest=~/.ssh/
+    with_fileglob:
+      - ./config_files/ssh/*
   - name: Instala diversos programas programas com brew
     homebrew: name={{item}}
     with_items:

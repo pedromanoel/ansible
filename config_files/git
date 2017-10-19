@@ -1,0 +1,48 @@
+[user]
+  email = pevange@thoughtworks.com
+  name = Pedro Manoel Evangelista
+[merge]
+  tool = meld
+[mergetool]
+  prompt = false
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+[push]
+  default = simple
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
+[color]
+  ui = true
+[core]
+  editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+  # atalhos
+  pf = pull --ff-only
+  unstage = reset HEAD --
+  # merges
+  mff = merge --ff-only
+  me = merge --no-ff --edit
+  mi = merge --no-ff --no-edit
+  # rebase
+  re = rebase --preserve-merges
+  # logs e diffs
+  lg = log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset -%C(blue)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  d = difftool -y
+  ds = diff --staged
+  mt = mergetool -y
+  # file status
+  hidden = !git ls-files -v | grep "^[[:lower:]]" | awk '{ print $2 }'
+  dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+  prune-local = !git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
+[credential]
+	helper = osxkeychain
+[fetch]
+	prune = true
+[rerere]
+	enabled = true
+[http]
