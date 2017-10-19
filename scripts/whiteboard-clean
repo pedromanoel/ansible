@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Script do gimp que limpa fotos de quadro branco em modo batch
+# http://registry.gimp.org/node/19822
+
+versao="1.0"
+programa=$(basename "$0")
+
+function mensagem_ajuda {
+  echo "$programa - processador de fotos de quadro branco [version $versao]"
+  echo "Uso: $programa <arquivo>"
+  echo "Erro: $1"
+}
+
+if [ $# -ne 1 ] ; then
+  mensagem_ajuda "O arquivo a ser convertido deve ser especificado"
+  exit 1
+fi
+
+if ! file "$1" | grep 'image data' -q ; then
+  mensagem_ajuda "O arquivo especificado deve ser uma imagem"
+  exit 1
+fi
+
+/Applications/GIMP.app/Contents/MacOS/GIMP -i -b "(batch-whiteboard-clean \"$1\")" -b '(gimp-quit 0)'

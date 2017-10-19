@@ -20,6 +20,7 @@
     with_items:
       - appcleaner
       - docker
+      - gimp
       - iterm2
       - macdown
       - qlmarkdown
@@ -37,6 +38,8 @@
       src: '~/workspaces/git/github/binkley/shell.git/git/git-tdd'
       dest: '~/.bin/git-tdd'
       state: link
+  - name: Adiciona script que limpa fotos de quadro branco
+    file: src=./scripts/whiteboard-cleanq dest=~/.bin/whiteboard-clean
   - name: Configura zsh
     copy: src=./config_files/zshrc dest=~/.zshrc
           backup=true
