@@ -1,12 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-  - name: Configura git
-    copy: src=./config_files/git dest=~/.gitconfig
-  - name: Configura ssh
-    copy: src={{item}} dest=~/.ssh/
-    with_fileglob:
-      - ./config_files/ssh/*
   - name: Instala xcode command line developer tools
     shell: xcode-select --install || true
     register: xcode_result
@@ -30,3 +24,9 @@
       - macdown
       - qlmarkdown
       - qlstephen
+  - name: Configura git
+    copy: src=./config_files/git dest=~/.gitconfig
+  - name: Configura ssh
+    copy: src={{item}} dest=~/.ssh/
+    with_fileglob:
+      - ./config_files/ssh/*
