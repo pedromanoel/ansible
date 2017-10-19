@@ -24,6 +24,13 @@
       - macdown
       - qlmarkdown
       - qlstephen
+  - name: Instala Oh-my-zsh
+    shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    register: ohmyzsh_result
+    changed_when: "'installed' not in ohmyzsh_result.stdout"
+  - name: Configura zsh
+    copy: src=./config_files/zshrc dest=~/.zshrc
+          backup=true
   - name: Configura git
     copy: src=./config_files/git dest=~/.gitconfig
   - name: Configura ssh
