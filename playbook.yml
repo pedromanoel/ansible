@@ -32,12 +32,16 @@
   - name: Clona git-tdd
     git:
       repo: 'git@github.com:binkley/shell.git'
-      dest: ~/workspaces/git/github/binkley/shell.git
+      dest: ~/workspaces/git/github/binkley/shell
   - name: Adiciona git-tdd no PATH
     file:
-      src: '~/workspaces/git/github/binkley/shell.git/git/git-tdd'
+      src: '~/workspaces/git/github/binkley/shell/git/git-tdd'
       dest: '~/.bin/git-tdd'
       state: link
+  - name: Clona adr-tools
+    git:
+      repo: 'git@github.com:npryce/adr-tools.git'
+      dest: ~/workspaces/git/github/npryce/adr-tools
   - name: Adiciona script que limpa fotos de quadro branco
     file: src=./scripts/whiteboard-cleanq dest=~/.bin/whiteboard-clean
   - name: Configura zsh
