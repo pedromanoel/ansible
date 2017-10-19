@@ -13,6 +13,9 @@ then
   exit 1
 fi
 
+echo "Removendo limite de file handles"
+sudo launchctl limit maxfiles unlimited
+
 echo "Instalando o pip"
 sudo easy_install -q pip
 
