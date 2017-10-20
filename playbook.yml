@@ -18,11 +18,13 @@
   - name: Instala diversos programas com cask
     homebrew_cask: name={{item}}
     with_items:
+      - 1password
       - appcleaner
       - docker
       - dropbox
       - gimp
       - iterm2
+      - keepassx
       - macdown
       - qlmarkdown
       - qlstephen
