@@ -23,6 +23,7 @@
       - docker
       - dropbox
       - gimp
+      - google-drive-file-stream
       - iterm2
       - keepassx
       - macdown
