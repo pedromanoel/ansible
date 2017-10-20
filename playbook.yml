@@ -35,7 +35,11 @@
   - name: Instala Oh-my-zsh
     shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     register: ohmyzsh_result
-    changed_when: "'installed' not in ohmyzsh_result.stdout"
+    changed_when: "'You already have Oh My Zsh installed' not in ohmyzsh_result.stdout"
+  - name: Instala jenv
+    shell: sh -c "$(curl -L -s get.jenv.io)"
+    register: jenv_result
+    changed_when: "'You already have JENV installed' not in jenv_result.stdout"
   - name: Clona git-tdd
     git:
       repo: 'git@github.com:binkley/shell.git'
