@@ -64,3 +64,11 @@
     copy: src={{item}} dest=~/.ssh/
     with_fileglob:
       - ./config_files/ssh/*
+  - name: Cria workspace
+    file: path=~/workspace/{{item}} recurse=true state=directory
+    with_items:
+      - git/github/pedromanoel
+      - git/bitbucket/pedromanoel
+      - git/gitlab.com/pedromanoel
+      - git/git.thoughtworks.net/pevange
+      - git/local
