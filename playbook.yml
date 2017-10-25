@@ -24,6 +24,7 @@
       - dropbox
       - gimp
       - google-drive-file-stream
+      - gpgtools
       - iterm2
       - keepassx
       - macdown
