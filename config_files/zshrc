@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/pevangeli/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker docker-compose mvn gradle jenv)
 
-export PATH="/Users/pevangeli/.bin:~/workspaces/git/github/npryce/adr-tools/src:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="~/.bin:~/workspaces/git/github/npryce/adr-tools/src:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -116,7 +116,7 @@ function title {
 }
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "/Users/pevangeli/.jenv/bin/jenv-init.sh" ]] && source "/Users/pevangeli/.jenv/bin/jenv-init.sh" && source "/Users/pevangeli/.jenv/commands/completion.sh"
+[[ -s "~/.jenv/bin/jenv-init.sh" ]] && source "~/.jenv/bin/jenv-init.sh" && source "~/.jenv/commands/completion.sh"
 
 # pyenv autocomplete
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

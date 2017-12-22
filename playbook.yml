@@ -11,11 +11,13 @@
     with_items:
       - adr-tools
       - chruby
+      - diff-so-fancy
       - git
       - github-markdown-toc
       - jq
       - jump
       - pyenv
+      - tree
       - zsh
       - zsh-completions
 
@@ -26,9 +28,8 @@
       - appcleaner
       - docker
       - dropbox
-      - gimp
       - google-drive-file-stream
-      - gpgtools
+      - gpg-suite
       - iterm2
       - keepassx
       - macdown
@@ -37,6 +38,30 @@
       - slack
       - telegram
       - whatsapp
+
+  - name: Cria workspace
+    file: path=~/workspace/git/{{item}} recurse=true state=directory
+    with_items:
+      - github/pedromanoel
+      - bitbucket/pedromanoel
+      - gitlab.com/pedromanoel
+      - git.thoughtworks.net/pevange
+      - local
+
+  - name: Cria .bin
+    file: path=~/.bin recurse=true state=directory
+
+  - name: Configura zsh
+    copy: src=./config_files/zshrc dest=~/.zshrc
+          backup=true
+
+  - name: Configura git
+    copy: src=./config_files/git dest=~/.gitconfig
+
+  - name: Configura ssh
+    copy: src={{item}} dest=~/.ssh/ mode=0600
+    with_fileglob:
+      - ./config_files/ssh/*
 
   - name: Instala Oh-my-zsh
     shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -51,39 +76,19 @@
   - name: Clona git-tdd
     git:
       repo: 'git@github.com:binkley/shell.git'
-      dest: ~/workspaces/git/github/binkley/shell
+      dest: ~/workspace/git/github/binkley/shell
 
   - name: Adiciona git-tdd no PATH
     file:
-      src: '~/workspaces/git/github/binkley/shell/git/git-tdd'
+      src: '~/workspace/git/github/binkley/shell/git/git-tdd'
       dest: '~/.bin/git-tdd'
       state: link
 
   - name: Clona adr-tools
     git:
       repo: 'git@github.com:npryce/adr-tools.git'
-      dest: ~/workspaces/git/github/npryce/adr-tools
+      dest: ~/workspace/git/github/npryce/adr-tools
 
   - name: Adiciona script que limpa fotos de quadro branco
-    file: src=./scripts/whiteboard-cleanq dest=~/.bin/whiteboard-clean
+    copy: src=./scripts/whiteboard-clean dest=~/.bin/whiteboard-clean
 
-  - name: Configura zsh
-    copy: src=./config_files/zshrc dest=~/.zshrc
-          backup=true
-
-  - name: Configura git
-    copy: src=./config_files/git dest=~/.gitconfig
-
-  - name: Configura ssh
-    copy: src={{item}} dest=~/.ssh/
-    with_fileglob:
-      - ./config_files/ssh/*
-
-  - name: Cria workspace
-    file: path=~/workspace/{{item}} recurse=true state=directory
-    with_items:
-      - git/github/pedromanoel
-      - git/bitbucket/pedromanoel
-      - git/gitlab.com/pedromanoel
-      - git/git.thoughtworks.net/pevange
-      - git/local
