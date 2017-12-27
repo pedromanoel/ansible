@@ -16,7 +16,9 @@
       - github-markdown-toc
       - jq
       - jump
+      - macvim
       - pyenv
+      - ruby-install
       - tree
       - zsh
       - zsh-completions
@@ -28,9 +30,12 @@
       - appcleaner
       - docker
       - dropbox
+      - evernote
+      - firefox
       - google-drive-file-stream
       - gpg-suite
       - iterm2
+      - jetbrains-toolbox
       - keepassx
       - macdown
       - qlmarkdown
