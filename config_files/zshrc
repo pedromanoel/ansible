@@ -116,7 +116,7 @@ function title {
 }
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "~/.jenv/bin/jenv-init.sh" ]] && source "~/.jenv/bin/jenv-init.sh" && source "~/.jenv/commands/completion.sh"
+[[ -s ~/.jenv/bin/jenv-init.sh ]] && source ~/.jenv/bin/jenv-init.sh && source ~/.jenv/commands/completion.sh
 
 # pyenv autocomplete
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

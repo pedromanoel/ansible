@@ -35,6 +35,7 @@
       - google-drive-file-stream
       - gpg-suite
       - iterm2
+      - java
       - jetbrains-toolbox
       - keepassx
       - macdown
