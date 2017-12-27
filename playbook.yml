@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
+  vars_files:
+    - config_files/macdown.yml
   tasks:
   - name: Instala xcode command line developer tools
     shell: xcode-select --install || true
@@ -68,6 +70,18 @@
     copy: src={{item}} dest=~/.ssh/ mode=0600
     with_fileglob:
       - ./config_files/ssh/*
+
+  - name: Define o estilo do MacDown
+    copy: src=./config_files/Clearness-TW.css dest="~/Library/Application Support/MacDown/Styles/Clearness-TW.css"
+
+  - name: Configura o MacDown
+    osx_defaults:
+      domain: com.uranusjr.macdown
+      key: "{{ item.chave }}"
+      type: "{{ item.tipo }}"
+      value: "{{ item.valor }}"
+    with_items:
+      - "{{ macdown_defaults }}"
 
   - name: Instala Oh-my-zsh
     shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
