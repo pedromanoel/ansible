@@ -7,6 +7,8 @@
     shell: xcode-select --install || true
     register: xcode_result
     changed_when: "'already installed' not in xcode_result.stderr"
+    tags:
+      - programas
 
   - name: Instala diversos programas com brew
     homebrew: name={{item}}
@@ -24,6 +26,8 @@
       - tree
       - zsh
       - zsh-completions
+    tags:
+      - programas
 
   - name: Instala diversos programas com cask
     homebrew_cask: name={{item}}
@@ -46,6 +50,8 @@
       - slack
       - telegram
       - whatsapp
+    tags:
+      - programas
 
   - name: Cria workspace
     file: path=~/workspace/git/{{item}} recurse=true state=directory
