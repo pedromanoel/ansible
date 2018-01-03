@@ -1,0 +1,45 @@
+---
+- name: Instala xcode command line developer tools
+  shell: xcode-select --install || true
+  register: xcode_result
+  changed_when: "'already installed' not in xcode_result.stderr"
+
+- name: Instala diversos programas com brew
+  homebrew: name={{item}} state=present
+  with_items:
+    - adr-tools
+    - chruby
+    - diff-so-fancy
+    - git
+    - github-markdown-toc
+    - jq
+    - jump
+    - macvim
+    - pyenv
+    - ruby-install
+    - tree
+    - zsh
+    - zsh-completions
+
+- name: Instala diversos programas com cask
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - 1password
+    - appcleaner
+    - docker
+    - dropbox
+    - evernote
+    - firefox
+    - google-drive-file-stream
+    - gpg-suite
+    - iterm2
+    - java
+    - jetbrains-toolbox
+    - keepassx
+    - macdown
+    - qlmarkdown
+    - qlstephen
+    - slack
+    - telegram
+    - whatsapp
+

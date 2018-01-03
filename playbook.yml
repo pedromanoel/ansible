@@ -3,82 +3,12 @@
   vars_files:
     - config_files/macdown.yml
   tasks:
-  - name: Instala xcode command line developer tools
-    shell: xcode-select --install || true
-    register: xcode_result
-    changed_when: "'already installed' not in xcode_result.stderr"
-    tags:
-      - programas
-
-  - name: Instala diversos programas com brew
-    homebrew: name={{item}}
-    with_items:
-      - adr-tools
-      - chruby
-      - diff-so-fancy
-      - git
-      - github-markdown-toc
-      - jq
-      - jump
-      - macvim
-      - pyenv
-      - ruby-install
-      - tree
-      - zsh
-      - zsh-completions
-    tags:
-      - programas
-
-  - name: Instala diversos programas com cask
-    homebrew_cask: name={{item}}
-    with_items:
-      - 1password
-      - appcleaner
-      - docker
-      - dropbox
-      - evernote
-      - firefox
-      - google-drive-file-stream
-      - gpg-suite
-      - iterm2
-      - java
-      - jetbrains-toolbox
-      - keepassx
-      - macdown
-      - qlmarkdown
-      - qlstephen
-      - slack
-      - telegram
-      - whatsapp
-    tags:
-      - programas
-
-  - name: Cria workspace
-    file: path=~/workspace/git/{{item}} recurse=true state=directory
-    with_items:
-      - github/pedromanoel
-      - bitbucket/pedromanoel
-      - gitlab.com/pedromanoel
-      - git.thoughtworks.net/pevange
-      - local
-
-  - name: Cria .bin
-    file: path=~/.bin recurse=true state=directory
-
-  - name: Configura zsh
-    copy: src=./config_files/zshrc dest=~/.zshrc
-          backup=true
-
-  - name: Configura git
-    copy: src=./config_files/git dest=~/.gitconfig
-
-  - name: Configura ssh
-    copy: src={{item}} dest=~/.ssh/ mode=0600
-    with_fileglob:
-      - ./config_files/ssh/*
-
-  - name: Define o estilo do MacDown
-    copy: src=./config_files/Clearness-TW.css dest="~/Library/Application Support/MacDown/Styles/Clearness-TW.css"
+  - import_tasks: tasks_programas.yml
+    tags: [programas]
+  - import_tasks: tasks_diretorios.yml
+    tags: [diretorios]
+  - import_tasks: tasks_configs.yml
+    tags: [configs]
 
   - name: Configura o MacDown
     osx_defaults:
@@ -109,11 +39,6 @@
       src: '~/workspace/git/github/binkley/shell/git/git-tdd'
       dest: '~/.bin/git-tdd'
       state: link
-
-  - name: Clona adr-tools
-    git:
-      repo: 'git@github.com:npryce/adr-tools.git'
-      dest: ~/workspace/git/github/npryce/adr-tools
 
   - name: Adiciona script que limpa fotos de quadro branco
     copy: src=./scripts/whiteboard-clean dest=~/.bin/whiteboard-clean

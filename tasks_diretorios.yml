@@ -1,0 +1,12 @@
+---
+- name: Cria workspace e diretorios do git
+  file: path=~/workspace/git/{{item}} recurse=true state=directory
+  with_items:
+    - github/pedromanoel
+    - bitbucket/pedromanoel
+    - gitlab.com/pedromanoel
+    - git.thoughtworks.net/pevange
+    - local
+
+- name: Cria .bin
+  file: path=~/.bin recurse=true state=directory
