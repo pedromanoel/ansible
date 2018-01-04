@@ -13,9 +13,11 @@ then
   exit 1
 fi
 
+# http://docs.ansible.com/ansible/latest/intro_installation.html#control-machine-requirements
 echo "Removendo limite de file handles"
 sudo launchctl limit maxfiles unlimited
 
+# http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-pip
 echo "Instalando o pip"
 sudo easy_install -q pip
 
