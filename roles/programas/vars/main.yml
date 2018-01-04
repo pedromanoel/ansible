@@ -1,0 +1,15 @@
+---
+macdown_defaults:
+  - { chave: SUEnableAutomaticChecks,         valor: 1,                   tipo: int }
+  - { chave: editorConvertTabs,               valor: 1,                   tipo: int }
+  - { chave: editorEnsuresNewlineAtEndOfFile, valor: 1,                   tipo: int }
+  - { chave: editorLineSpacing,               valor: 0,                   tipo: float }
+  - { chave: editorSmartHome,                 valor: 1,                   tipo: int }
+  - { chave: editorStyleName,                 valor: "Solarized (Light)", tipo: string }
+  - { chave: htmlCodeBlockAccessory,          valor: 1,                   tipo: int }
+  - { chave: htmlDetectFrontMatter,           valor: 1,                   tipo: int }
+  - { chave: htmlHighlightingThemeName,       valor: Tomorrow,            tipo: string }
+  - { chave: htmlLineNumbers,                 valor: 1,                   tipo: int }
+  - { chave: htmlStyleName,                   valor: "Clearness-TW",      tipo: string }
+  - { chave: htmlSyntaxHighlighting,          valor: 1,                   tipo: int }
+  - { chave: htmlTemplateName,                valor: Default,             tipo: string }

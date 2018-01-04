@@ -1,0 +1,19 @@
+---
+- name: Instala jenv
+  shell: sh -c "$(curl -L -s get.jenv.io)"
+  register: jenv_result
+  changed_when: "'You already have JENV installed' not in jenv_result.stdout"
+
+- name: Clona o repositório do git-tdd
+  git:
+    repo: 'git@github.com:binkley/shell.git'
+    dest: ~/workspace/git/github/binkley/shell
+- name: Adiciona git-tdd no PATH
+  file:
+    src: '~/workspace/git/github/binkley/shell/git/git-tdd'
+    dest: '/usr/bin/local/'
+    state: link
+
+- name: Adiciona script que limpa fotos de quadro branco
+  copy: src=whiteboard-clean dest=/usr/bin/local
+

@@ -41,5 +41,17 @@
     - qlstephen
     - slack
     - telegram
+    - visual-studio-code
     - whatsapp
 
+- name: Restaura o estilo do MacDown
+  copy: src=Clearness-TW.css dest="~/Library/Application Support/MacDown/Styles/Clearness-TW.css"
+
+- name: Configura o MacDown
+  osx_defaults:
+    domain: com.uranusjr.macdown
+    key: "{{ item.chave }}"
+    type: "{{ item.tipo }}"
+    value: "{{ item.valor }}"
+  with_items:
+    - "{{ macdown_defaults }}"

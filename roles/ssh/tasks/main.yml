@@ -1,0 +1,5 @@
+---
+- name: Restaura configurações de ssh
+  copy: src={{item}} dest=~/.ssh/ mode=0600
+  with_fileglob:
+    - "*"
