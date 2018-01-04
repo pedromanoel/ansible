@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  roles:
-    - { role: programas, tags: [programas] }
-    - { role: dev_tools, tags: [dev_tools] }
-    - { role: workspace, tags: [workspace] }
-    - { role: ssh, tags: [ssh] }
-    - { role: ambiente, tags: [ambiente] }
-

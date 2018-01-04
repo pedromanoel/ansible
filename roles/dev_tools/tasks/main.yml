@@ -8,12 +8,13 @@
   git:
     repo: 'git@github.com:binkley/shell.git'
     dest: ~/workspace/git/github/binkley/shell
+
 - name: Adiciona git-tdd no PATH
   file:
     src: '~/workspace/git/github/binkley/shell/git/git-tdd'
-    dest: '/usr/bin/local/'
+    dest: '/usr/local/bin/git-tdd'
     state: link
 
 - name: Adiciona script que limpa fotos de quadro branco
-  copy: src=whiteboard-clean dest=/usr/bin/local
+  copy: src=whiteboard-clean dest=/usr/local/bin/ mode=744
 
