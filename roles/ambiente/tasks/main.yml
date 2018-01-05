@@ -1,13 +1,14 @@
 ---
 - name: Restaura configurações do zsh
   copy: src=zshrc dest=~/.zshrc
-        backup=true
 
 - name: Restaura configurações do git
   copy: src=gitconfig dest=~/.gitconfig
 
 - name: Instala Oh-my-zsh
-  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  register: ohmyzsh_result
-  changed_when: "'You already have Oh My Zsh installed' not in ohmyzsh_result.stdout"
+  command: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh/
 
+- name: Restaura customizações do Oh-my-zsh
+  copy: src=themes dest=~/.oh-my-zsh/custom/

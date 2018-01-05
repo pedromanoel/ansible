@@ -13,7 +13,7 @@ Posso fazer todo o provisionamento com o comando
 
 Melhorias que posso fazer
 
-- [ ] Adicionar plugin do tema do oh-my-zsh
+- [x] Adicionar plugin do tema do oh-my-zsh
 - [ ] Adicionar chaves do gpg
 
 ## Segredos
