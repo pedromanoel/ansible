@@ -12,3 +12,14 @@
 
 - name: Restaura customizações do Oh-my-zsh
   copy: src=themes dest=~/.oh-my-zsh/custom/
+
+- name: Baixa fontes do Powerline
+  git:
+    repo: https://github.com/powerline/fonts.git
+    dest: ~/workspace/git/github/powerline/fonts
+    depth: 1
+
+- name: Instala fontes do Powerline
+  command: ~/workspace/git/github/powerline/fonts/install.sh
+  args:
+    creates: ~/Library/Fonts/3270Medium.ttf
