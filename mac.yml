@@ -1,6 +1,6 @@
 ---
 - import_playbook: _programas.yml
-- import_playbook: _dev_tools.yml
-- import_playbook: _workspace.yml
 - import_playbook: _ssh.yml
 - import_playbook: _ambiente.yml
+- import_playbook: _workspace.yml
+- import_playbook: _dev_tools.yml

@@ -3,18 +3,28 @@
 Os playbooks deste repositório privisionam a minha máquina de
 desenvolvimento em um sistema OSX.
 
-Para começar, basta rodar `instalar.sh` para instalar o ansible no
+Para começar, basta rodar o comando abaixo para instalar o ansible no
 computador.
 
-Posso fazer todo o provisionamento com o comando
-`ansible-playbook mac.yml` ou executar os playbooks individualmente.
+```bash
+./instalar.sh
+```
+
+Posso fazer todo o provisionamento com o comando abaixo:
+
+
+```
+ansible-playbook mac.yml --ask-vault-pass
+```
+
+Ainda é possível executar os playbooks individualmente.
 
 ## Melhorias
 
 Melhorias que posso fazer
 
 - [x] Adicionar plugin do tema do oh-my-zsh
-- [ ] Adicionar chaves do gpg
+- [x] Adicionar chaves do gpg
 
 ## Segredos
 

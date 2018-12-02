@@ -4,47 +4,55 @@
   register: xcode_result
   changed_when: "'already installed' not in xcode_result.stderr"
 
+- name: Instala brew
+  shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  args:
+    creates: /usr/local/bin/brew
+
 - name: Instala diversos programas com brew
-  homebrew: name={{item}} state=present
-  with_items:
-    - adr-tools
-    - chruby
-    - diff-so-fancy
-    - git
-    - github-markdown-toc
-    - jq
-    - jump
-    - macvim
-    - pyenv
-    - ruby-install
-    - tree
-    - vim
-    - zsh
-    - zsh-completions
+  homebrew:
+    state: latest
+    update_homebrew: yes
+    name:
+      - adr-tools
+      - chruby
+      - diff-so-fancy
+      - git
+      - github-markdown-toc
+      - jq
+      - jump
+      - pyenv
+      - ruby-install
+      - tree
+      - vim
+      - zsh
+      - zsh-completions
 
 - name: Instala diversos programas com cask
-  homebrew_cask: name={{item}} state=present
-  with_items:
-    - 1password
-    - appcleaner
-    - docker
-    - dropbox
-    - evernote
-    - firefox
-    - gas-mask
-    - google-drive-file-stream
-    - gpg-suite
-    - iterm2
-    - java
-    - jetbrains-toolbox
-    - keepassx
-    - macdown
-    - qlmarkdown
-    - qlstephen
-    - slack
-    - telegram
-    - visual-studio-code
-    - whatsapp
+  tags: [only]
+  homebrew_cask:
+    state: upgraded
+    name: 
+      - 1password
+      - appcleaner
+      - docker
+      - dropbox
+      - evernote
+      - firefox
+      - gas-mask
+      - google-drive-file-stream
+      - gpg-suite
+      - iterm2
+      - java
+      - jetbrains-toolbox
+      - keepassx
+      - macdown
+      - qlmarkdown
+      - qlstephen
+      - slack
+#      - telegram
+      - visual-studio-code
+      - whatsapp
 
 - name: Restaura o estilo do MacDown
   copy: src=Clearness-TW.css dest="~/Library/Application Support/MacDown/Styles/Clearness-TW.css"

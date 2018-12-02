@@ -1,8 +1,7 @@
 ---
 - name: Instala jenv
-  shell: sh -c "$(curl -L -s get.jenv.io)"
-  register: jenv_result
-  changed_when: "'You already have JENV installed' not in jenv_result.stdout"
+  homebrew:
+    name: jenv
 
 - name: Clona o repositório do git-tdd
   git:
