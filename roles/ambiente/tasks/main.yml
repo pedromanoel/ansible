@@ -13,6 +13,11 @@
 - name: Restaura customizações do Oh-my-zsh
   copy: src=themes dest=~/.oh-my-zsh/custom/
 
+- name: Cria diretório de configuração do nvm
+  file:
+    path: ~/.nvm
+    state: directory
+
 - name: Baixa fontes do Powerline
   git:
     repo: https://github.com/powerline/fonts.git

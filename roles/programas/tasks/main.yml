@@ -21,6 +21,7 @@
       - github-markdown-toc
       - jq
       - jump
+      - nvm
       - pyenv
       - ruby-install
       - tree

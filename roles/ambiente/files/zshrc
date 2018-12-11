@@ -115,6 +115,9 @@ function title {
   echo -ne "\033]$mode;"$*"\007"
 }
 
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 [[ -s ~/.jenv/bin/jenv-init.sh ]] && source ~/.jenv/bin/jenv-init.sh && source ~/.jenv/commands/completion.sh
 
