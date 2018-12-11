@@ -12,4 +12,5 @@ macdown_defaults:
   - { chave: htmlLineNumbers,                 valor: 1,                   tipo: int }
   - { chave: htmlStyleName,                   valor: "Clearness-TW",      tipo: string }
   - { chave: htmlSyntaxHighlighting,          valor: 1,                   tipo: int }
+  - { chave: htmlTaskList,                    valor: 1,                   tipo: int }
   - { chave: htmlTemplateName,                valor: Default,             tipo: string }
