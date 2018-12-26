@@ -55,6 +55,7 @@
 #      - telegram
       - visual-studio-code
       - whatsapp
+      - zoomus
 
 - name: Restaura o estilo do MacDown
   copy: src=Clearness-TW.css dest="~/Library/Application Support/MacDown/Styles/Clearness-TW.css"
