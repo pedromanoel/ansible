@@ -41,6 +41,7 @@
       - evernote
       - firefox
       - gas-mask
+      - google-chrome
       - google-drive-file-stream
       - gpg-suite
       - itau
@@ -49,6 +50,7 @@
       - jetbrains-toolbox
       - keepassx
       - macdown
+#      - optimage
       - qlmarkdown
       - qlstephen
       - slack
