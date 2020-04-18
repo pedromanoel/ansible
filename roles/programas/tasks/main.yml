@@ -36,11 +36,13 @@
     name: 
       - 1password
       - appcleaner
+      - calibre
       - docker
       - dropbox
       - evernote
       - firefox
       - gas-mask
+      - gitup
       - google-chrome
       - google-drive-file-stream
       - gpg-suite
@@ -54,9 +56,11 @@
       - qlmarkdown
       - qlstephen
       - slack
-#      - telegram
+      - spotify
+      - telegram
       - visual-studio-code
       - whatsapp
+      - xmind
       - zoomus
 
 - name: Restaura o estilo do MacDown
